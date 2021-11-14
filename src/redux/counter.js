@@ -1,24 +1,22 @@
-function increment (value) {
+function increment () {
   return {
-    type: 'INCREMENT',
-    payload: value
+    type: 'INCREMENT'
   }
 }
 
-function decrement (value) {
+function decrement () {
   return {
-    type: 'DECREMENT',
-    payload: value
+    type: 'DECREMENT'
   }
 }
 
 function countReducer (count = 0, action) {
   switch (action.type) {
     case 'INCREMENT':
-      return count + action.payload
+      return count + 1
 
     case 'DECREMENT':
-      return count - action.payload
+      return count - 1
 
     default:
       return count
