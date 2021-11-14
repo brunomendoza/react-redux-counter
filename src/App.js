@@ -1,22 +1,22 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 import { increment, decrement } from './redux/counter'
 
 function App (props) {
+  const count = useSelector(state => state)
+  const dispatch = useDispatch()
+
   return (
     <div>
-      <h1>{ props.count }</h1>
-      <button onClick={ props.increment }>+</button>
-      <button onClick={ props.decrement }>-</button>
+      <h1>{ count }</h1>
+      <button onClick={ () => dispatch(increment()) }>+</button>
+      <button onClick={ () => dispatch(decrement()) }>-</button>
     </div>
   )
 }
 
-const mapsStateToProps = state => ({ count: state })
-const mapDispatchToProps = {
-  increment,
-  decrement
-}
+// https://thoughtbot.com/blog/using-redux-with-react-hooks
+// https://react-redux.js.org/api/hooks#usage-warnings
 
-export default connect(mapsStateToProps, mapDispatchToProps)(App)
+export default App
